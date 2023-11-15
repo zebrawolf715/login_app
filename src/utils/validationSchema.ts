@@ -8,10 +8,12 @@ export const validationSchema = z
         password: z.string().min(6, "パスワードは6文字以上で入力してください"),
         passwordConfirmation: z.string(),
     })
+    //確認メールアドレス
     .refine(
         ({ email, emailConfirmation }) => email === emailConfirmation,
         { path: ["emailConfirmation"]}
     )
+    //確認パスワード
     .refine(
         ({ password, passwordConfirmation }) => password === passwordConfirmation,
         { path: ["passwordConfirmation"],}
